@@ -1,14 +1,12 @@
 #include <iostream>
-#include "headers/facade.h"
+#include "headers/fachada.h"
 
 using namespace std;
-using namespace FacadeMenu;
+using namespace Fachada;
 
 int main()
 {
-
-    Facade_Menu facade_Menu;
-
+    Fachada_Menu facade_Menu;
     facade_Menu.show();
     cin.ignore();
     return 0;
