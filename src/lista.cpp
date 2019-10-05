@@ -2,7 +2,15 @@
 #include "../headers/nodo.h"
 
 using namespace Collections;
-Nodo T::get_nodo_inicio()
+
+template <class T>
+Nodo<T> Lista<T>::get_nodo_inicio()
 {
     return inicio;
+}
+
+template <class T>
+Nodo<T> Lista<T>::get_nodo_final()
+{
+    return fin;
 }
