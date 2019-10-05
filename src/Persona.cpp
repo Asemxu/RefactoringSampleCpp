@@ -4,21 +4,24 @@
 using namespace std;
 using namespace Personal;
 
-void Persona::MostrarInfo(){
-	cout<<"Nombre: "<<Persona::getNombres()<<endl;
-	cout<<"Edad: "<<Persona::getEdad()<<endl;
-	
+void Persona::MostrarInfo()
+{
+	cout<<"Nombre: "<<Persona::get_nombres()<<endl;
+	cout<<"Edad: "<<Persona::get_edad()<<endl;
 }
-string Persona::getNombres(){
+string Persona::get_nombres()
+{
 	return nombres;
 }
-int Persona::getEdad(){
+int Persona::get_edad()
+{
 	return edad;
 }
-void Persona::setEdad(int edad_persona){
+void Persona::set_edad(int edad_persona)
+{
 	edad=edad_persona;
 }
-void Persona::setNombres(string nombres_persona)
+void Persona::set_nombres(string nombres_persona)
 {
 	nombres=nombres_persona;
 }
