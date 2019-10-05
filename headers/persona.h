@@ -1,20 +1,27 @@
 #ifndef PERSONA_H
 #define PERSONA_h
-namespace Personas{
+#include <iostream>
+#include <string>
+#include <cstddef>
+using namespace std;
+namespace Personal{
 class Persona{
-	char* Nombres;
-	int Edad;
+	string nombres;
+	int edad;
+	private:
+		static Persona persona_instancia;
 	public :
-		Persona(char*,int);
-		char * getNombres();
+		string getNombres();
 		int getEdad();
-		void  setNombres(char *);
+		void  setNombres(string);
 		void  setEdad(int );
 		void MostrarInfo();
+		static Persona& Instanciar(){
+			static Persona persona_instancia;
+			return persona_instancia;
+		}
+		
 };	
-Persona::Persona(char*Nombres_persona,int Edad_persona){
-	Nombres=Nombres_persona;
-	Edad=Edad_persona;
-}
+
 }
 #endif

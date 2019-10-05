@@ -2,15 +2,23 @@
 #include <iostream>
 
 using namespace std;
-using namespace Personas;
+using namespace Personal;
 
-char * Persona::getNombres(){return Nombres;}
-int Persona::getEdad(){return Edad;}
-void Personas::Persona::setNombres(char* Nombre_persona){Nombres=Nombre_persona;}
-void Persona::setEdad(int Edad){Edad=Edad;}
 void Persona::MostrarInfo(){
-	cout<<"Persona "<<endl;
-	cout<<"Nombre: "<<Persona::getNombres();
-	cout<<"Edad: "<<Persona::getEdad();
+	cout<<"Nombre: "<<Persona::getNombres()<<endl;
+	cout<<"Edad: "<<Persona::getEdad()<<endl;
+	
 }
-
+string Persona::getNombres(){
+	return nombres;
+}
+int Persona::getEdad(){
+	return edad;
+}
+void Persona::setEdad(int edad_persona){
+	edad=edad_persona;
+}
+void Persona::setNombres(string nombres_persona)
+{
+	nombres=nombres_persona;
+}
