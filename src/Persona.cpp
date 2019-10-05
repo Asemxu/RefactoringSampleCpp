@@ -2,8 +2,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace Persona;
+using namespace Personas;
 
-void Persona_class::setNombres(char *Nombres){
-	
-}
+
+

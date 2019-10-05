@@ -1,19 +1,25 @@
 #ifndef PERSONA_H
 #define PERSONA_h
-namespace Persona{
-class Persona_class{
+namespace Personas{
+class Persona{
 	char* Nombres;
 	int Edad;
 	public :
+		Persona(char*,int);
 		char * getNombres();
 		int getEdad();
-		void  setNombres(char * Nombre_persona);
-		void  setEdad(int Edad);
+		void  setNombres(char *);
+		void  setEdad(int );
+		void MostrarInfo();
 };	
-
-char * Persona_class::getNombres(){return Nombres;}
-int Persona_class::getEdad(){return Edad;}
-void Persona_class::setNombres(char* Nombre_persona){Nombres=Nombre_persona;}
-void Persona_class::setEdad(int Edad){Edad=Edad;}
+Persona::Persona(char*Nombres_persona,int Edad_persona){
+	Nombres=Nombres_persona;
+	Edad=Edad_persona;
+}
+char * Persona::getNombres(){return Nombres;}
+int Persona::getEdad(){return Edad;}
+void Personas::Persona::setNombres(char* Nombre_persona){Nombres=Nombre_persona;}
+void Persona::setEdad(int Edad){Edad=Edad;}
+void Persona::MostrarInfo(){}
 }
 #endif
