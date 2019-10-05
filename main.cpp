@@ -3,7 +3,7 @@
 #include "headers/persona.h"
 using namespace std;
 using namespace Fachada;
-using namespace Personal;
+using namespace Modelo;
 int main()
 {
     Fachada_Menu facade_Menu;
