@@ -19,11 +19,8 @@ int main()
 	persona.MostrarInfo();
 	cin.ignore();
 
-	Nodo<Persona> nodo;
-	nodo.siguiente = NULL;
-	nodo.objeto = persona;
 
-	personas.add_inicio(nodo);
+	personas.add_inicio(persona);
 
 	personas.mostrar_lista();
 

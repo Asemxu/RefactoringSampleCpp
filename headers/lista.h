@@ -4,7 +4,7 @@
 
 namespace Collections
 {
-template <class T>
+template <typename T>
 class Lista
 {
 protected:
@@ -12,8 +12,8 @@ protected:
     Nodo_Dato<T> fin;
 
 public:
-    Lista();
-    ~Lista();
+    Lista<T>();
+    ~Lista<T>();
     virtual void add_inicio(T objeto);
     virtual void add_final(T objeto);
     virtual bool esta_vacia() = 0;
@@ -23,5 +23,5 @@ public:
     void set_nodo_fin(Nodo_Dato<T> nodo);
 };
 
-} 
+}
 #endif
