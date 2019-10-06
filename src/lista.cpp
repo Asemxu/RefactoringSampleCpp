@@ -4,13 +4,25 @@
 using namespace Collections;
 
 template <class T>
-Nodo<T> Lista<T>::get_nodo_inicio()
+Nodo_Dato<T> Lista<T>::get_nodo_inicio()
 {
-    return inicio;
+    return this->inicio;
 }
 
 template <class T>
-Nodo<T> Lista<T>::get_nodo_final()
+Nodo_Dato<T> Lista<T>::get_nodo_final()
 {
-    return fin;
+    return this->fin;
+}
+
+template <class T>
+void Lista<T>::set_nodo_inicio(Nodo_Dato<T> nodo)
+{
+    this->inicio = nodo;
+}
+
+template <class T>
+void Lista<T>::set_nodo_fin(Nodo_Dato<T> nodo)
+{
+    this->fin = nodo;
 }
