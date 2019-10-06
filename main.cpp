@@ -2,14 +2,11 @@
 #include "headers/fachada.h"
 #include "headers/persona.h"
 #include "headers/lista_enlazada.h"
-#include "headers/nodo.h"
-#include "headers/lista.h"
 
 using namespace std;
 using namespace Fachada;
 using namespace Modelo;
 using namespace Lista;
-using namespace Collections;
 
 int main()
 {
