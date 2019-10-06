@@ -11,17 +11,17 @@ void Persona::MostrarInfo()
 }
 string Persona::get_nombres()
 {
-	return nombres;
+	return this->nombres;
 }
 int Persona::get_edad()
 {
-	return edad;
+	return this->edad;
 }
 void Persona::set_edad(int edad_persona)
 {
-	edad=edad_persona;
+	this->edad=edad_persona;
 }
 void Persona::set_nombres(string nombres_persona)
 {
-	nombres=nombres_persona;
+	this->nombres=nombres_persona;
 }

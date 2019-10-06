@@ -2,19 +2,20 @@
 #define LISTA_ENLAZADA_H
 #include "lista.h"
 #include "nodo.h"
+#include <cstddef>
 
 namespace Lista
 {
 
-template <typename T>
+template <class T>
 class Lista_Enlazada : public Collections::Lista<T>
 {
 public:
     ~Lista_Enlazada<T>();
     Lista_Enlazada<T>()
     {
-        set_nodo_inicio(NULL);
-        set_nodo_fin(NULL);
+        this->inicio = NULL;
+        this->fin = NULL;
     }
     void add_inicio(T objeto);
     void add_final(T objeto);
@@ -22,7 +23,7 @@ public:
     bool esta_vacia();
 
 private:
-    void insetar_en_lista_vacia(Nodo_Dato<T> objeto);
+    void insertar_dato_en_lista_vacia(Nodo_Dato<T> objeto);
     Nodo_Dato<T> instanciar_nodo_dato(T dato);
 };
 } 

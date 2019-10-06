@@ -4,7 +4,7 @@
 
 namespace Collections
 {
-template <typename T>
+template <class T>
 class Lista
 {
 protected:

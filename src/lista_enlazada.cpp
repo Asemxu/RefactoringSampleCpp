@@ -8,7 +8,7 @@ using namespace std;
 template <class T>
 Nodo_Dato<T> Lista_Enlazada<T>::instanciar_nodo_dato(T dato)
 {
-    Nodo_Dato nodo_dato;
+    Nodo_Dato<T> nodo_dato;
     nodo_dato->objeto = dato;
     nodo_dato->siguiente = NULL;
     return nodo_dato;
@@ -17,7 +17,7 @@ Nodo_Dato<T> Lista_Enlazada<T>::instanciar_nodo_dato(T dato)
 template <class T>
 void Lista_Enlazada<T>::add_inicio(T objeto)
 {
-    Nodo_Dato nodo_dato = this->instanciar_nodo_dato(objeto);
+    Nodo_Dato<T> nodo_dato = this->instanciar_nodo_dato(objeto);
     if (this->esta_vacia())
     {
         this->insetar_en_lista_vacia();
@@ -25,7 +25,7 @@ void Lista_Enlazada<T>::add_inicio(T objeto)
     else
     {
         nodo_dato->siguiente = this->inicio;
-        inicio = nodo_dato;
+        this->inicio = nodo_dato;
     }
 }
 
@@ -46,7 +46,7 @@ void Lista_Enlazada<T>::mostrar_lista()
 }
 
 template <class T>
-void Lista_Enlazada<T>::insetar_en_lista_vacia(Nodo_Dato<T> objeto)
+void Lista_Enlazada<T>::insertar_dato_en_lista_vacia(Nodo_Dato<T> objeto)
 {
     objeto->siguiente = NULL;
     this->inicio = objeto;
