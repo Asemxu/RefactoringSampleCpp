@@ -1,1 +1,1 @@
-g++ main.cpp src/*.cpp
+g++  main.cpp src/*.cpp

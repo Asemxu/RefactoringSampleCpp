@@ -5,30 +5,23 @@
 #include "nodo.h"
 #include <cstddef>
 
-namespace Lista
+namespace Asd
 {
 
 template <class T>
 class Lista_Enlazada : public Collections::Lista<T>
 {
 
- 
 public:
- void add_inicio(T) {
-
- }
-    void add_final(T) {
-
-    }
-    bool esta_vacia(){ return 1;}
+    void add_inicio(T) override;
+    void add_final(T) override;
+    bool esta_vacia() override;
     void mostrar_lista();
-    Lista_Enlazada(){
+    Lista_Enlazada()
+    {
         this->inicio = NULL;
         this->fin = NULL;
     }
-
-  
-
 
 private:
     void insertar_dato_en_lista_vacia(Nodo_Dato<T> objeto);

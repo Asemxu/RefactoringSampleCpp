@@ -6,7 +6,7 @@
 using namespace std;
 using namespace Fachada;
 using namespace Modelo;
-using namespace Lista;
+using namespace Asd;
 
 int main()
 {
