@@ -10,7 +10,7 @@ using namespace Lista;
 
 int main()
 {
-	Lista_Enlazada<Persona> personas;
+	Lista_Enlazada<Persona> asd;
 
 	// Persona persona;
 	// persona.set_nombres("test");
