@@ -4,7 +4,7 @@ namespace Fachada
 {
 class Fachada_Menu
 {
-    public:void show();
+    public:void showMenu();
 };
 } 
 #endif

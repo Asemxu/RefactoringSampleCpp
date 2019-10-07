@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace Personal;
+using namespace Modelo;
 
 void Persona::MostrarInfo()
 {
