@@ -21,14 +21,10 @@ public:
     virtual ~Lista<T>()
     {
     }
-    virtual void add_inicio(T ) =0;
-    virtual void add_final(T ) =0;
-    virtual bool esta_vacia() =0;
-    Nodo_Dato<T> get_nodo_inicio();
-    Nodo_Dato<T> get_nodo_final();
-    void set_nodo_inicio(Nodo_Dato<T> nodo);
-    void set_nodo_fin(Nodo_Dato<T> nodo);
+    virtual void add_inicio(T) = 0;
+    virtual void add_final(T) = 0;
+    virtual bool esta_vacia() = 0;
 };
 
-}
+} 
 #endif

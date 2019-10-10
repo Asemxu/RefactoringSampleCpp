@@ -14,10 +14,10 @@ void Lista_Enlazada<T>::add_final(T objeto)
 template <class T>
 void Lista_Enlazada<T>::add_inicio(T objeto) 
 {
-    Nodo_Dato<T> nodo_dato = this->instanciar_nodo_dato(objeto);
-    if (this->esta_vacia())
+    Nodo_Dato<T> nodo_dato = Lista_Enlazada<T>::instanciar_nodo_dato(objeto);
+    if (Lista_Enlazada<T>::esta_vacia())
     {
-        this->insetar_en_lista_vacia();
+        this->insertar_dato_en_lista_vacia(objeto);
     }
     else
     {
@@ -43,6 +43,7 @@ void Lista_Enlazada<T>::mostrar_lista()
 }
 
 template <class T>
+inline
 void Lista_Enlazada<T>::insertar_dato_en_lista_vacia(Nodo_Dato<T> objeto)
 {
     objeto->siguiente = NULL;

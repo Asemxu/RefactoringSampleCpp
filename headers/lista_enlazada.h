@@ -22,11 +22,12 @@ public:
         this->inicio = NULL;
         this->fin = NULL;
     }
-
-private:
     void insertar_dato_en_lista_vacia(Nodo_Dato<T> objeto);
     Nodo_Dato<T> instanciar_nodo_dato(T dato);
 };
 } // namespace Lista
-
+#ifndef IMPLEMENTACION
+#define IMPLEMENTACION
+#include "../src/lista_enlazada.cpp"
+#endif
 #endif
