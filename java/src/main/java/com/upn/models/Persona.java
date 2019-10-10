@@ -12,8 +12,14 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int id) {
+    public Persona(int id, int edad, String nombre) {
         this.id = id;
+        this.edad = edad;
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setNombre(String nombre) {

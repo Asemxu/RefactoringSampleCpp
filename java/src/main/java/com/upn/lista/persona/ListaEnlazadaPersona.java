@@ -3,7 +3,6 @@ package com.upn.lista.persona;
 import com.upn.lista.Collection;
 import com.upn.lista.data.Nodo;
 import com.upn.models.Persona;
-
 import java.util.Comparator;
 
 public class ListaEnlazadaPersona extends Collection implements ListaPersona {
@@ -102,6 +101,13 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
 
     private void eliminaPersona(int idPersona) {
         Nodo<Persona> nodoActual = inicio;
+        if (getCantidadDatos() == 1)
+            evaluaYEliminaAlInicio(idPersona, nodoActual);
+        else
+            evaluaYEliminaEnLosDemas(idPersona, nodoActual);
+    }
+
+    private void evaluaYEliminaEnLosDemas(int idPersona, Nodo<Persona> nodoActual) {
         while (nodoActual != null) {
             Nodo<Persona> nodoSiguiente = nodoActual.getSiguiente();
             if (nodoSiguiente.getDato().getId() == idPersona) {
@@ -109,6 +115,13 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
                 break;
             }
             nodoActual = nodoActual.getSiguiente();
+        }
+    }
+
+    private void evaluaYEliminaAlInicio(int idPersona, Nodo<Persona> nodoActual) {
+        if (nodoActual.getDato().getId() == idPersona) {
+            inicio = null;
+            fin = null;
         }
     }
 
@@ -124,7 +137,8 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
     }
 
     private void ordenaPersonas(Comparator comparator) {
-        Nodo<Persona> i = inicio, j;
+        Nodo i = inicio;
+        Nodo j;
         while (i != null) {
             j = i.getSiguiente();
             while (j != null) {
@@ -138,11 +152,10 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
     }
 
     private void intercambiaDatos(Nodo i, Nodo j) {
-        Nodo temp = i;
+        Persona temp = (Persona) i.getDato();
         i.setDato(j.getDato());
         j.setDato(temp);
     }
-
 
     private void eliminarNodo(Nodo<Persona> nodoActual, Nodo<Persona> nodoSiguiente) {
         nodoActual.setSiguiente(nodoSiguiente.getSiguiente());
