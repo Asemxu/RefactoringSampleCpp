@@ -1,10 +1,14 @@
 package com.upn.lista.persona;
 
+import com.upn.lista.Lista;
+import com.upn.lista.ListaEnlazada;
 import com.upn.models.Persona;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.Comparator;
 import java.util.stream.IntStream;
+
 import static org.junit.Assert.*;
 
 public class ListaEnlazadaPersonaTest {
@@ -18,6 +22,8 @@ public class ListaEnlazadaPersonaTest {
     @Test
     public void agregarAlInicioFunciona() {
         agregarDatosInicioLista(4);
+        assertEquals(3, ((Persona) listaEnlazadaPersona.getPrimerDato()).getId());
+        assertEquals(0, ((Persona) listaEnlazadaPersona.getUltimoDato()).getId());
         assertEquals("3210", listaEnlazadaPersona.toString());
         assertEquals(4, listaEnlazadaPersona.getCantidadDatos());
     }
@@ -25,6 +31,8 @@ public class ListaEnlazadaPersonaTest {
     @Test
     public void agregarAlFinalFunciona() {
         agregarDatosFinalLista(4);
+        assertEquals(0, ((Persona) listaEnlazadaPersona.getPrimerDato()).getId());
+        assertEquals(3, ((Persona) listaEnlazadaPersona.getUltimoDato()).getId());
         assertEquals("0123", listaEnlazadaPersona.toString());
         assertEquals(4, listaEnlazadaPersona.getCantidadDatos());
     }
@@ -51,6 +59,8 @@ public class ListaEnlazadaPersonaTest {
         assertEquals(0, listaEnlazadaPersona.getCantidadDatos());
         agregarDatosInicioLista(3);
         assertEquals(3, listaEnlazadaPersona.getCantidadDatos());
+        agregarDatosInicioLista(4);
+        assertEquals(7, listaEnlazadaPersona.getCantidadDatos());
     }
 
     @Test
@@ -58,11 +68,13 @@ public class ListaEnlazadaPersonaTest {
         listaEnlazadaPersona.agregarDatoInicio(new Persona(1, 3, ""));
         listaEnlazadaPersona.agregarDatoInicio(new Persona(2, 1, ""));
         listaEnlazadaPersona.agregarDatoInicio(new Persona(3, 2, ""));
-        listaEnlazadaPersona.agregarDatoInicio(new Persona(3, 5, ""));
-        listaEnlazadaPersona.agregarDatoInicio(new Persona(3, 4, ""));
+        listaEnlazadaPersona.agregarDatoInicio(new Persona(4, 5, ""));
+        listaEnlazadaPersona.agregarDatoInicio(new Persona(5, 4, ""));
         String edadesOrdenadas = "12345";
-        listaEnlazadaPersona.ordenarPersonas(getEdadComparator());
+        listaEnlazadaPersona.ordenarDatos(getEdadComparator());
         assertEquals(edadesOrdenadas, listaEnlazadaPersona.toString());
+        assertEquals(2, ((Persona) listaEnlazadaPersona.getPrimerDato()).getId());
+        assertEquals(4, ((Persona) listaEnlazadaPersona.getUltimoDato()).getId());
     }
 
     @Test
@@ -77,18 +89,19 @@ public class ListaEnlazadaPersonaTest {
     @Test
     public void eliminarPersonaFunciona() {
         agregarDatosInicioLista(4);
-        listaEnlazadaPersona.eliminarPersona(0);
-        assertNull(null, listaEnlazadaPersona.encontrarPersona(0).getNombre());
-        assertEquals("321", listaEnlazadaPersona.toString());
-        listaEnlazadaPersona.eliminarPersona(1);
-        assertNull(null, listaEnlazadaPersona.encontrarPersona(1).getNombre());
-        assertEquals("32", listaEnlazadaPersona.toString());
-        listaEnlazadaPersona.eliminarPersona(2);
-        assertNull(null, listaEnlazadaPersona.encontrarPersona(2).getNombre());
-        assertEquals("3", listaEnlazadaPersona.toString());
         listaEnlazadaPersona.eliminarPersona(3);
-        assertEquals("", listaEnlazadaPersona.toString());
         assertNull(listaEnlazadaPersona.encontrarPersona(3).getNombre());
+        assertEquals(2, ((Persona)listaEnlazadaPersona.getPrimerDato()).getId());
+        assertEquals("210", listaEnlazadaPersona.toString());
+        listaEnlazadaPersona.eliminarPersona(2);
+        assertNull(listaEnlazadaPersona.encontrarPersona(2).getNombre());
+        assertEquals("10", listaEnlazadaPersona.toString());
+        listaEnlazadaPersona.eliminarPersona(1);
+        assertNull(listaEnlazadaPersona.encontrarPersona(1).getNombre());
+        assertEquals("0", listaEnlazadaPersona.toString());
+        listaEnlazadaPersona.eliminarPersona(0);
+        assertEquals("", listaEnlazadaPersona.toString());
+        assertNull(listaEnlazadaPersona.encontrarPersona(0).getNombre());
         assertTrue(listaEnlazadaPersona.estaVacia());
     }
 
@@ -97,6 +110,16 @@ public class ListaEnlazadaPersonaTest {
         assertEquals("", listaEnlazadaPersona.toString());
         agregarDatosInicioLista(5);
         assertEquals("43210", listaEnlazadaPersona.toString());
+    }
+
+    @Test
+    public void asd() {
+        Lista<Integer> notas = new ListaEnlazada<>();
+        notas.agregarDatoFinal(1);
+        notas.agregarDatoFinal(2);
+        notas.agregarDatoFinal(3);
+        notas.agregarDatoFinal(4);
+        notas.mostrarDatos();
     }
 
     private void validarActulizarPersona(Persona personaNueva, int idPersonaActualizar) {

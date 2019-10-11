@@ -1,5 +1,7 @@
 package com.upn.lista;
 
+import java.util.Comparator;
+
 public interface Lista<T> {
     void agregarDatoInicio(T dato);
 
@@ -10,4 +12,6 @@ public interface Lista<T> {
     boolean estaVacia();
 
     int getCantidadDatos();
+
+    void ordenarDatos(Comparator comparator);
 }

@@ -1,7 +1,6 @@
 package com.upn.menu;
 
 import com.upn.models.Persona;
-
 import java.util.Scanner;
 
 public class MenuConstantesGestionPersonas {

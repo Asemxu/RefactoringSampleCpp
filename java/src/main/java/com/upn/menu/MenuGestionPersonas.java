@@ -1,14 +1,12 @@
 package com.upn.menu;
 
 import com.upn.lista.persona.ListaEnlazadaPersona;
-import com.upn.lista.persona.ListaPersona;
 import com.upn.models.Persona;
 import java.util.Comparator;
-
 import static com.upn.menu.MenuConstantesGestionPersonas.*;
 
 public class MenuGestionPersonas implements Menu {
-    private ListaPersona personas;
+    private ListaEnlazadaPersona personas;
 
     public MenuGestionPersonas() {
         personas = new ListaEnlazadaPersona();
@@ -30,7 +28,7 @@ public class MenuGestionPersonas implements Menu {
                 Persona persona = solicitarDatosPersona();
                 personas.agregarDatoInicio(persona);
                 break;
-            }
+        }
             case INSERTAR_PERSONA_FIN: {
                 Persona persona = solicitarDatosPersona();
                 personas.agregarDatoFinal(persona);
@@ -53,7 +51,7 @@ public class MenuGestionPersonas implements Menu {
             }
             case ORDENAR_PERSONAS: {
                 Comparator<Persona> edadComparator = getEdadComparator();
-                personas.ordenarPersonas(edadComparator);
+                personas.ordenarDatos(edadComparator);
                 break;
             }
             case SALIR: {

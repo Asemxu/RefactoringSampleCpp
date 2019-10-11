@@ -3,28 +3,11 @@ package com.upn.lista.persona;
 import com.upn.lista.Collection;
 import com.upn.lista.data.Nodo;
 import com.upn.models.Persona;
-import java.util.Comparator;
 
 public class ListaEnlazadaPersona extends Collection implements ListaPersona {
 
     public ListaEnlazadaPersona() {
         super();
-    }
-
-    @Override
-    public void agregarDatoInicio(Persona dato) {
-        if (estaVacia())
-            insetarDatoListaVacia(dato);
-        else
-            agregarAlInicio(dato);
-    }
-
-    @Override
-    public void agregarDatoFinal(Persona dato) {
-        if (estaVacia())
-            insetarDatoListaVacia(dato);
-        else
-            agregarAlFinal(dato);
     }
 
     @Override
@@ -37,33 +20,14 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
     }
 
     @Override
-    public Persona encontrarPersona(int id) {
+    public Persona encontrarPersona(int idPersona) {
         Nodo<Persona> nodoTemporal = inicio;
         while (nodoTemporal != null) {
-            if (nodoTemporal.getDato().getId() == id)
+            if (nodoTemporal.getDato().getId() == idPersona)
                 return nodoTemporal.getDato();
             nodoTemporal = nodoTemporal.getSiguiente();
         }
         return new Persona();
-    }
-
-    @Override
-    public boolean estaVacia() {
-        return inicio == null && fin == null;
-    }
-
-    @Override
-    public int getCantidadDatos() {
-        if (estaVacia())
-            return 0;
-        else
-            return contarNodos();
-    }
-
-    @Override
-    public void ordenarPersonas(Comparator comparator) {
-        if (!estaVacia())
-            ordenaPersonas(comparator);
     }
 
     @Override
@@ -89,25 +53,22 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
         return edades.toString();
     }
 
-    private int contarNodos() {
-        Nodo<Persona> nodoTemporal = inicio;
-        int cant = 0;
-        while (nodoTemporal != null) {
-            nodoTemporal = nodoTemporal.getSiguiente();
-            cant++;
-        }
-        return cant;
-    }
-
     private void eliminaPersona(int idPersona) {
         Nodo<Persona> nodoActual = inicio;
         if (getCantidadDatos() == 1)
-            evaluaYEliminaAlInicio(idPersona, nodoActual);
+            evaluaYEliminaAlInicio(nodoActual, idPersona);
+        else if (nodoActual.getDato().getId() == idPersona)
+            eliminarNodoInicio(nodoActual);
         else
-            evaluaYEliminaEnLosDemas(idPersona, nodoActual);
+            evaluaYEliminaEnLosDemas(nodoActual, idPersona);
     }
 
-    private void evaluaYEliminaEnLosDemas(int idPersona, Nodo<Persona> nodoActual) {
+    private void eliminarNodoInicio(Nodo<Persona> nodoActual) {
+        inicio = inicio.getSiguiente();
+        nodoActual.setSiguiente(null);
+    }
+
+    private void evaluaYEliminaEnLosDemas(Nodo<Persona> nodoActual, int idPersona) {
         while (nodoActual != null) {
             Nodo<Persona> nodoSiguiente = nodoActual.getSiguiente();
             if (nodoSiguiente.getDato().getId() == idPersona) {
@@ -118,7 +79,7 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
         }
     }
 
-    private void evaluaYEliminaAlInicio(int idPersona, Nodo<Persona> nodoActual) {
+    private void evaluaYEliminaAlInicio(Nodo<Persona> nodoActual, int idPersona) {
         if (nodoActual.getDato().getId() == idPersona) {
             inicio = null;
             fin = null;
@@ -136,47 +97,18 @@ public class ListaEnlazadaPersona extends Collection implements ListaPersona {
         }
     }
 
-    private void ordenaPersonas(Comparator comparator) {
-        Nodo i = inicio;
-        Nodo j;
-        while (i != null) {
-            j = i.getSiguiente();
-            while (j != null) {
-                boolean elPrimerDatoEsMayor = comparator.compare(i.getDato(), j.getDato()) == 1;
-                if (elPrimerDatoEsMayor)
-                    intercambiaDatos(i, j);
-                j = j.getSiguiente();
-            }
-            i = i.getSiguiente();
+    private void eliminarNodo(Nodo<Persona> nodoActual, Nodo<Persona> nodoSiguiente) {
+        if (nodoActual.equals(fin))
+            eliminarNodoFinal(nodoActual, nodoSiguiente);
+        else {
+            nodoActual.setSiguiente(nodoSiguiente.getSiguiente());
+            nodoSiguiente.setSiguiente(null);
         }
     }
 
-    private void intercambiaDatos(Nodo i, Nodo j) {
-        Persona temp = (Persona) i.getDato();
-        i.setDato(j.getDato());
-        j.setDato(temp);
-    }
-
-    private void eliminarNodo(Nodo<Persona> nodoActual, Nodo<Persona> nodoSiguiente) {
-        nodoActual.setSiguiente(nodoSiguiente.getSiguiente());
+    private void eliminarNodoFinal(Nodo<Persona> nodoActual, Nodo<Persona> nodoSiguiente) {
+        fin = nodoActual;
+        nodoActual.setSiguiente(null);
         nodoSiguiente.setSiguiente(null);
-    }
-
-    private void agregarAlInicio(Persona dato) {
-        Nodo nodoInsertar = new Nodo<>(dato);
-        nodoInsertar.setSiguiente(inicio);
-        inicio = nodoInsertar;
-    }
-
-    private void agregarAlFinal(Persona dato) {
-        Nodo nodoInsetar = new Nodo<>(dato);
-        fin.setSiguiente(nodoInsetar);
-        fin = nodoInsetar;
-    }
-
-    private void insetarDatoListaVacia(Persona dato) {
-        Nodo nodoInsertar = new Nodo<>(dato);
-        inicio = nodoInsertar;
-        fin = nodoInsertar;
     }
 }
